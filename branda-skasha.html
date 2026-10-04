@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - SMK Al-fusha Pekalongan</title>
+    <style>
+        /* ==========================================
+           1. RESET & BASE STYLES
+           ========================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+           background: linear-gradient(135deg, #11265e 0%, #050508 100%);
+            color: #333333;
+            line-height: 1.6;
+        }
+
+    
+
+        /* ==========================================
+           2. HEADER & NAVBAR
+           ========================================== */
+        header {
+            background: rgba(30, 41, 59, 0); /* Mulai transparan sepenuhnya di atas hero */
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: padding 0.3s ease, background-color 0.3s ease;
+        }
+
+        header.is-scrolled .brand img {
+            width: 26px;
+            height: 26px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .brand img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+       
+        /* ==========================================
+        3. HERO BANNER
+        ========================================== */
+        
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Pas penuh 1 layar penuh */
+            min-height: 600px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('FUJI0181.jpg');
+            background-size: cover; 
+            background-position: center 10%;
+            background-repeat: no-repeat;
+            color: white;
+            flex-direction: column;
+            justify-content: center; 
+            display: flex;
+            align-items: center;    
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 0;/* Hapus margin bawah agar statistik langsung menempel rapi */
+            gap: 15px;
+        }
+
+        .hero-container {
+            display: inline-block;
+            text-align: left; /* Membuat isi di dalamnya (judul dan paragraf) rata kiri secara rapi */
+            max-width: 900px;
+            margin-bottom: 10px;
+        }
+
+        .hero strong {
+            color: #1d4ed8;
+        }
+
+        .hero h1 {
+            font-size: 4rem; 
+            margin-bottom:  0;;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: -10px 0 25px 0; /* Jarak atas kecil agar rapat dengan h1, bawah 25px ke tombol */
+            opacity: 0.95;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.2s;
+            position: relative;
+            top: 50px;
+            
+        }
+
+        .hero-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTION STATISTIK --- */
+        .stats-container {
+            margin-top: 20px; /* Sedikit ditarik ke atas agar menimpa/menyatu dengan bagian bawah hero secara estetik */
+            position: relative; 
+            z-index: 10;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 16px;
+            margin-bottom: 40px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05); /* Warna transparan putih tipis */
+            backdrop-filter: blur(10px); /* Efek buram di belakang kotak (frosted glass) */
+            -webkit-backdrop-filter: blur(10px); /* Dukungan untuk Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Garis tepi tipis bersinar */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Bayangan lembut */
+            border-radius: 12px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(207, 207, 207, 0.699);
+            
+        }
+
+        /* Bulatan Gradasi Biru */
+        .stat-circle {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+        }
+
+        /* Teks Keterangan di Bawah Bulatan */
+        .stat-label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           4. CONTAINER & GRID KONTEN
+           ========================================== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            padding: 0 16px;
+            margin-top: 50px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2563eb;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        /* GRID ARTIKEL */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            
+        }
+
+        .article-grid a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex: 1;
+        }
+
+        .article-grid > a:hover .card {
+              box-shadow: 0 8px 25px rgba(255, 255, 255, 0.678);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05); /* Warna transparan putih tipis */
+            backdrop-filter: blur(10px); /* Efek buram di belakang kotak (frosted glass) */
+            -webkit-backdrop-filter: blur(10px); /* Dukungan untuk Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Garis tepi tipis bersinar */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Bayangan lembut */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.411);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .card.active-main {
+            transform: scale(1.08); /* Efek membesar di tengah */
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            color: #2563eb;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+      
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .card-link {
+            font-size: 0.85rem;
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-link:hover {
+            text-decoration: none;
+        }
+
+    
+        footer {
+            background-color: #1e293b;
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 14px;
+            }
+            header.is-scrolled {
+                padding: 6px 14px;
+            }
+            .brand {
+                font-size: 0.9rem;
+            }
+}
+
+
+
+/* ==========================================
+           5. PANEL ADMIN & LOGIN MODAL STYLES
+           ========================================== */
+        .admin-btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .admin-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Modal Background */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background-color: #fdfbf7;
+            padding: 25px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            color: #333;
+        }
+
+        .modal-box h3 {
+            margin-bottom: 15px;
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #475569;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background-color: #64748b;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-save {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .error-msg {
+            color: #dc2626;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* ==========================================
+   6. HORIZONTAL SCROLLING PROFILE CARDS (INFINITE)
+   ========================================== */
+.people-container {
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+    padding: 0 16px;
+    overflow: hidden;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow-x: auto; 
+    overflow-y: hidden;
+    white-space: nowrap; 
+    padding: 40px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    cursor: grab;
+    scroll-behavior:smooth; /* Penting agar perulangan program tidak patah-patah */
+    
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.scroll-wrapper {
+    display: inline-flex;
+    gap: 20px; 
+    padding-left: calc(50% - 95px); /* Menyesuaikan setengah dari lebar kartu aktif (190px / 2) */
+    padding-right: calc(50% - 95px);
+    will-change: transform;
+    align-items: center;
+}
+
+#scrollContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: auto; /* Wajib auto agar reset instan tidak terhalang animasi bawaan browser */
+    -webkit-overflow-scrolling: touch;
+    /* Tambahkan baris di bawah ini agar pergerakan lebih halus */
+    will-change: scroll-position;
+    transform: translateZ(0);
+    height: 355px;
+}
+
+.profile-card {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 0 0 auto; 
+    width: 160px;  
+    height: 240px; 
+    border-radius: 14px;
+    overflow: hidden; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease, border 0.2s ease;
+    opacity: 0.5;
+    background: #1e1e1e;
+}
+
+/* KARTU UTAMA (MAIN) YANG BERADA DI TENGAH LAYAR */
+.profile-card.active-main {
+    width: 190px;  
+    height: 280px; 
+    transform: scale(1.05);
+    opacity: 1;    
+    border: 2px solid #2563eb; 
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+    z-index: 10;
+}
+
+.profile-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.profile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    z-index: 2;
+}
+
+.profile-info {
+    position: relative;
+    z-index: 3;
+    padding: 15px;
+    white-space: normal;
+}
+
+.profile-name {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.profile-role {
+    font-size: 0.75rem;
+    color: #cbd5e1;
+}
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <img src="Gemini_Generated_Image_xrgimzxrgimzxrgi-removebg-preview.png" alt="Logo SMK">
+            <span>SMK Al-fusha Pekalongan</span>
+        </div>
+        <div class="contact-info">
+            📞 <a href="tel:085742874434">0857-4287-4434</a>
+        </div>
+
+        <button class="admin-btn" onclick="bukaModalLogin()">Admin Edit</button>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>WELCOME TO <strong>XII TJKT</strong></h1>
+            <p>SEPI RAMAI SELALU BERSAMA</p>
+        </div>
+
+        <a href="artikel apa aja.html" class="hero-btn">Jelajahi Lebih banyak Artikel</a>
+
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                
+                <!-- Kotak 1: Total Siswa -->
+                <div class="stat-card">
+                    <div class="stat-circle" id="val-siswa">29</div>
+                    <div class="stat-label">Total Siswa</div>
+                </div>
+
+                <!-- Kotak 2: Total Guru -->
+                <div class="stat-card">
+                    <div class="stat-circle" id="val-guru">5</div>
+                    <div class="stat-label">Total Guru</div>
+                </div>
+
+                <!-- Kotak 3: Siswa Laki-laki -->
+                <div class="stat-card">
+                    <div class="stat-circle" id="val-lakilaki">22</div>
+                    <div class="stat-label">Siswa Laki-laki</div>
+                </div>
+
+                <!-- Kotak 4: Siswa Perempuan -->
+                <div class="stat-card">
+                    <div class="stat-circle" id="val-perempuan">7</div>
+                    <div class="stat-label">Siswa Perempuan</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="people-container">
+    <h2 class="section-title">Daftar Anggota / Tokoh</h2>
+
+    <!-- Area Scroll Samping -->
+    <div class="scroll-container" id="scrollContainer">
+        <div class="scroll-wrapper" id="scrollWrapper">
+            <!-- 1 -->
+            <div class="profile-card">
+                <img src="foto1.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Aldi Firmansyah</div>
+                    <div class="profile-role">Ketua Kelas</div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="profile-card">
+                <img src="foto2.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Bagas Arditya</div>
+                    <div class="profile-role">Sekretaris</div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="profile-card">
+                <img src="foto3.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Bumi Raga Semesta</div>
+                    <div class="profile-role">Bendahara</div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Chandra Arditya</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Daniswara Saipul A.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Denandra Cakra K.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Faisal Danniz</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Fajar Aqyas K.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Hartama Safari</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Himmatul Ulya Alhali</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Kirana Arun</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Luna Winky Santoso</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Margaretha Padma Jayanti</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 14 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Maulana Yusuf Eka P.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 15 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Mizar Faisal H.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 16 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">M. Atha Maliq Said</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 17 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">M. Dzilfiqri Albykandy</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 18 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Nilna Ramadhani</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 19 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Noval Ainurrizal</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 20 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Nur Fadli K.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 21 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Nur Widodo</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 22 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Rafi Nur Hidayat</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 23 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Rafif Adrian Trisna A.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 24 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Rendi Gunawan</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 25 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Sabila Auliani</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 26 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Surya Alam Maulana</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 27 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Syafa Mustika Ayu</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 28 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Wildan Aula J.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+
+            <!-- 29 -->
+            <div class="profile-card">
+                <img src="foto4.jpg" alt="fotoorg">
+                <div class="profile-overlay"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Wisnu Hadi S.</div>
+                    <div class="profile-role">Anggota</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- KONTEN UTAMA -->
+    <div class="container" id="materi">
+        <h2 class="section-title">Artikel & Materi seputar TKJ</h2>
+
+        <div class="article-grid">
+
+            <!-- KARTU ARTIKEL 1 -->
+            <a href="skasha.html" style="text-decoration: none;"> 
+                <div class="card">
+                    <img src="banin kali ini.JPG" alt="Siswa TKJ" class="card-img">
+                    <div class="card-body">
+                        <span class="card-category">Informasi Jurusan TKJ</span>
+                        <h3 class="card-title">
+                            Apa itu Jurusan TKJ? Pengertian dan Ruang Lingkup Pembelajaran
+                        </h3>
+                        <p class="card-desc">Pelajari dasar-dasar merakit komputer, instalasi jaringan, sistem operasi, serta alasan kenapa siswa TKJ wajib berpikir kritis.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- KARTU ARTIKEL 2 -->
+            
+            <a href="kurikulum skasha.html" style="text-decoration: none;"> 
+                <div class="card">
+                    <img src="tulisan punggung tkj.JPG" alt="Kurikulum TKJ" class="card-img">
+                    <div class="card-body">
+                        <span class="card-category">Kurikulum</span>
+                        <h3 class="card-title">
+                            Sinkronisasi Kurikulum TKJ SMK Al-fusha dengan Dunia Kerja
+                        </h3>
+                        <p class="card-desc">Penyelarasan kurikulum pembelajaran sekolah dengan kebutuhan Industri Dunia Kerja (IDUKA) terkini.</p>
+                        
+                    </div>
+                </div>
+            </a>
+
+
+            <!-- KARTU ARTIKEL 3 -->
+
+            <a href="halaman laporan PKL.html" style="text-decoration: none;">
+                <div class="card">
+                    <img src="prktk 1.JPG" alt="Laporan PKL" class="card-img">
+                    <div class="card-body">
+                        <span class="card-category">Laporan PKL</span>
+                        <h3 class="card-title">
+                            Panduan Penulisan Laporan PKL
+                        </h3>
+                        <p class="card-desc">Petunjuk lengkap bagi siswa kelas XI & XII dalam menyusun bab pendahuluan hingga penutup laporan Praktik Kerja Lapangan.</p>
+                        
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2026 SMK Al-fusha Pekalongan - Jurusan Teknik Komputer dan Jaringan.
+    </footer>
+
+    <script>
+    window.addEventListener("scroll", function() {
+        const header = document.querySelector("header");
+        // Kalau di-scroll lebih dari 20px, tambahkan kelas 'is-scrolled'
+        if (window.scrollY > 20) {
+            header.classList.add("is-scrolled");
+        } else {
+            header.classList.remove("is-scrolled");
+        }
+    });
+    </script>
+
+</body>
+
+<!-- MODAL LOGIN ADMIN -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box">
+            <h3>Login Admin</h3>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="adminUser" placeholder="Masukkan username">
+            </div>
+            <div class="form-group">
+                <label>Sandi (Password)</label>
+                <input type="password" id="adminPass" placeholder="Masukkan sandi">
+            </div>
+            <div class="error-msg" id="loginError">Username atau Sandi salah!</div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="tutupModalLogin()">Batal</button>
+                <button class="btn-save" onclick="prosesLogin()">Masuk</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDIT DATA STATISTIK -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-box">
+            <h3>Edit Data Statistik Sekolah</h3>
+            <div class="form-group">
+                <label>Total Siswa</label>
+                <input type="number" id="inputSiswa">
+            </div>
+            <div class="form-group">
+                <label>Total Guru</label>
+                <input type="number" id="inputGuru">
+            </div>
+            <div class="form-group">
+                <label>Siswa Laki-laki</label>
+                <input type="number" id="inputLaki">
+            </div>
+            <div class="form-group">
+                <label>Siswa Perempuan</label>
+                <input type="number" id="inputPerempuan">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="tutupModalEdit()">Batal</button>
+                <button class="btn-save" onclick="simpanDataStatistik()">Simpan Perubahan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Konfigurasi Akun Admin Default
+    const USER_ADMIN = "admin123";
+    const SANDI_ADMIN = "alfusha2026";
+
+    // 1. Load data dari LocalStorage saat halaman pertama kali dibuka
+    document.addEventListener("DOMContentLoaded", function() {
+        if(localStorage.getItem("stat_siswa")) {
+            document.getElementById("val-siswa").innerText = localStorage.getItem("stat_siswa");
+        }
+        if(localStorage.getItem("stat_guru")) {
+            document.getElementById("val-guru").innerText = localStorage.getItem("stat_guru");
+        }
+        if(localStorage.getItem("stat_laki")) {
+            document.getElementById("val-lakilaki").innerText = localStorage.getItem("stat_laki");
+        }
+        if(localStorage.getItem("stat_perempuan")) {
+            document.getElementById("val-perempuan").innerText = localStorage.getItem("stat_perempuan");
+        }
+    });
+
+    // 2. Fungsi Kontrol Modal Login
+    function bukaModalLogin() {
+        document.getElementById("adminUser").value = "";
+        document.getElementById("adminPass").value = "";
+        document.getElementById("loginError").style.display = "none";
+        document.getElementById("loginModal").style.display = "flex";
+    }
+
+    function tutupModalLogin() {
+        document.getElementById("loginModal").style.display = "none";
+    }
+
+    // 3. Proses Validasi Login
+    function prosesLogin() {
+        let u = document.getElementById("adminUser").value;
+        let p = document.getElementById("adminPass").value;
+
+        if(u === USER_ADMIN && p === SANDI_ADMIN) {
+            tutupModalLogin();
+            bukaModalEdit();
+        } else {
+            document.getElementById("loginError").style.display = "block";
+        }
+    }
+
+    // 4. Fungsi Kontrol Modal Edit Data
+    function bukaModalEdit() {
+        // Masukkan data saat ini ke dalam inputan form edit
+        document.getElementById("inputSiswa").value = document.getElementById("val-siswa").innerText;
+        document.getElementById("inputGuru").value = document.getElementById("val-guru").innerText;
+        document.getElementById("inputLaki").value = document.getElementById("val-lakilaki").innerText;
+        document.getElementById("inputPerempuan").value = document.getElementById("val-perempuan").innerText;
+        
+        document.getElementById("editModal").style.display = "flex";
+    }
+
+    function tutupModalEdit() {
+        document.getElementById("editModal").style.display = "none";
+    }
+
+    // 5. Simpan Data ke LocalStorage & Tampilkan di Web
+    function simpanDataStatistik() {
+        let s = document.getElementById("inputSiswa").value;
+        let g = document.getElementById("inputGuru").value;
+        let l = document.getElementById("inputLaki").value;
+        let p = document.getElementById("inputPerempuan").value;
+
+        // Simpan ke browser LocalStorage
+        localStorage.setItem("stat_siswa", s);
+        localStorage.setItem("stat_guru", g);
+        localStorage.setItem("stat_laki", l);
+        localStorage.setItem("stat_perempuan", p);
+
+        // Update langsung di tampilan web
+        document.getElementById("val-siswa").innerText = s;
+        document.getElementById("val-guru").innerText = g;
+        document.getElementById("val-lakilaki").innerText = l;
+        document.getElementById("val-perempuan").innerText = p;
+
+        tutupModalEdit();
+        alert("Data statistik berhasil diperbarui!");
+    }
+
+    // Header scroll effect yang sudah ada
+    window.addEventListener("scroll", function() {
+        const header = document.querySelector("header");
+        if (window.scrollY > 20) {
+            header.classList.add("is-scrolled");
+        } else {
+            header.classList.remove("is-scrolled");
+        }
+    });
+    </script>
+
+    <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById("scrollContainer");
+            const wrapper = document.getElementById("scrollWrapper");
+            
+            // Ambil elemen kartu asli
+            const originalCards = Array.from(wrapper.children);
+            
+            // Gandakan elemen di awal dan di akhir untuk menciptakan efek infinite loop yang mulus
+            originalCards.forEach(card => {
+                let cloneFirst = card.cloneNode(true);
+                let cloneLast = card.cloneNode(true);
+                wrapper.appendChild(cloneFirst);    // Duplikat di akhir
+                wrapper.insertBefore(cloneLast, wrapper.firstChild); // Duplikat di awal
+            });
+
+            const cards = Array.from(wrapper.children);
+            let singleSetWidth = 0;
+
+            // Hitung lebar satu set kartu secara presisi termasuk margin/gap CSS
+            function initInfiniteScroll() {
+                if (originalCards.length > 0) {
+                    const firstCard = originalCards[0];
+                    const style = window.getComputedStyle(firstCard);
+                    const cardWidth = firstCard.offsetWidth + 
+                                    parseFloat(style.marginLeft) + 
+                                    parseFloat(style.marginRight);
+                    
+                    // Total lebar satu set murni berdasarkan jumlah kartu asli * lebar satu kartu
+                    singleSetWidth = cardWidth * originalCards.length;
+                    
+                    // Mulai dari set bagian tengah
+                    container.scrollLeft = singleSetWidth; 
+                }
+            }
+
+            window.addEventListener("load", initInfiniteScroll);
+            initInfiniteScroll();
+
+            // Fungsi untuk mendeteksi kartu mana yang berada di tengah layar agar ukurannya membesar
+            function updateActiveCard() {
+                const containerRect = container.getBoundingClientRect();
+                const containerCenter = containerRect.left + containerRect.width / 2;
+
+                let closestCard = null;
+                let minDistance = Infinity;
+
+                cards.forEach(card => {
+                    const cardRect = card.getBoundingClientRect();
+                    const cardCenter = cardRect.left + cardRect.width / 2;
+                    const distance = Math.abs(containerCenter - cardCenter);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestCard = card;
+                    }
+                });
+
+                cards.forEach(card => card.classList.remove("active-main"));
+                if (closestCard) {
+                    closestCard.classList.add("active-main");
+                }
+            }
+
+            // Mekanisme Infinite Loop dengan rentang aman agar perpindahan tidak terlihat
+            function handleInfiniteScroll() {
+                if (!singleSetWidth) return;
+
+                // Jika geseran mendekati ujung kanan (1.9x), lempar mundur ke tengah secara tak kasat mata
+                if (container.scrollLeft >= singleSetWidth * 2.4) {
+                    container.scrollLeft -= singleSetWidth;
+                } 
+                // Jika geseran mundur terlalu ke kiri (0.1x), lempar maju ke tengah
+                else if (container.scrollLeft <= singleSetWidth * 0.1) {
+                    container.scrollLeft += singleSetWidth;
+                }
+            }
+
+            // --- AUTO-SCROLL MENGGUNAKAN requestAnimationFrame (Jauh Lebih Mulus & Game-like) ---
+            let animationId = null;
+            let isAutoScrolling = true;
+            const scrollSpeed = 0.8; // Kecepatan pergeseran pelan & stabil
+
+            function step() {
+                if (isAutoScrolling) {
+                    container.scrollLeft += scrollSpeed;
+                    handleInfiniteScroll();
+                    updateActiveCard();
+                    animationId = requestAnimationFrame(step);
+                }
+            }
+
+            function startAutoScroll() {
+                if (!isAutoScrolling) {
+                    isAutoScrolling = true;
+                    animationId = requestAnimationFrame(step);
+                }
+            }
+
+            function stopAutoScroll() {
+                isAutoScrolling = false;
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            }
+
+            // Jalankan auto-scroll saat pertama kali dimuat
+            animationId = requestAnimationFrame(step);
+
+            // Berhenti otomatis saat kursor mouse mendekat atau layar disentuh jari
+            container.addEventListener("mouseenter", stopAutoScroll);
+            container.addEventListener("touchstart", stopAutoScroll, { passive: true });
+
+            // Jalan kembali saat kursor menjauh atau jari dilepas
+            container.addEventListener("mouseleave", startAutoScroll);
+            container.addEventListener("touchend", () => {
+                setTimeout(startAutoScroll, 2000);
+            }, { passive: true });
+
+            // Event listener saat digeser manual oleh user
+            container.addEventListener("scroll", () => {
+                updateActiveCard();
+                handleInfiniteScroll();
+            }, { passive: true });
+        });
+    </script>
+</html>      

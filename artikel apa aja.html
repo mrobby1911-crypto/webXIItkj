@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apa itu Jurusan TKJ? Pengertian & Ruang Lingkup</title>
+    <style>
+        /* ==========================================
+           1. RESET DEFAULT & FONTS
+           ========================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           2. HEADER / NAVBAR (DESKTOP DEFAULT)
+           ========================================== */
+        header {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .navbar {
+           max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            width: 100%;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.25s ease;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 20px;
+            color: floralwhite;
+            transition: font-size 0.25s ease;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            margin-left: auto;
+        }
+
+        .header-contact a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .header-contact a:hover {
+            color: #93c5fd;
+        }
+
+        /* --- Search Box Header --- */
+        .search-box {
+            position: relative;
+            width: 320px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 9px 15px;
+            font-size: 0.9rem;
+            border: 2px solid #2563eb;
+            border-radius: 6px;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        #searchInput:focus {
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .results-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: 8px;
+            overflow: hidden;
+            z-index: 99;
+        }
+
+        .results-dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: #1f2937;
+            text-decoration: none;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background 0.2s;
+        }
+
+        .results-dropdown a:hover {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        /* --- Header Shrink State (Saat Scroll Down) --- */
+        header.shrink {
+            padding: 8px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        header.shrink .logo-img {
+            height: 32px;
+        }
+
+        header.shrink .logo-text {
+            font-size: 16px;
+        }
+
+        header.shrink #searchInput {
+            padding: 8px 15px;
+            font-size: 0.88rem;
+        }
+
+        /* ==========================================
+           3. MAIN LAYOUT & KONTEN (DESKTOP DEFAULT)
+           ========================================== */
+        .wrapper {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        .main-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .main-content, .comment-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .breadcrumbs {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 20px;
+            padding: 8px 12px;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .breadcrumbs a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs .current-page {
+            color: #333333;
+            font-weight: 600;
+        }
+
+        .meta-info {
+            font-size: 13px;
+            color: #777777;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            font-size: 28px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 350px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            object-fit: cover;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        h2 {
+            color: #1e3a8a;
+            margin: 30px 0 15px 0;
+            font-size: 20px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        /* Form Komentar & Author */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 20px;
+        }
+
+        .comment-title {
+            font-size: 20px;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .comment-note {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .form-row input[type="text"],
+        .form-row input[type="email"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin: 15px 0 20px 0;
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        .btn-submit {
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1e3a8a;
+        }
+
+        /* Sidebar */
+        aside.sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-widget {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .widget-title {
+            color: #1e3a8a;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 8px;
+        }
+
+        /* ==========================================
+           4. COMBINED MEDIA QUERY (KHUSUS HP / MOBILE)
+           ========================================== */
+       @media screen and (max-width: 768px) {
+            header {
+                padding: 12px 15px; 
+                width: 100%;
+            }
+
+            .navbar {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .logo-container {
+                justify-content: flex-start;
+                gap: 8px;
+            }
+
+            .logo-img {
+                height: 28px;
+            }
+
+            .logo-text {
+                font-size: 15px;
+            }
+
+            .header-contact {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 2px;
+                margin-left: auto;
+            }
+
+            .header-contact a {
+                font-size: 11px;
+                white-space: nowrap;
+            }
+
+            .search-box {
+                grid-column: 1 / -1;
+                width: 100%;
+                max-width: 100%;
+                margin: 4px 0 0 0;
+            }
+
+            #searchInput {
+                width: 100%;
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            header.shrink {
+                padding: 6px 15px;
+            }
+
+            header.shrink .logo-img {
+                height: 22px;
+            }
+
+            header.shrink .logo-text {
+                font-size: 13px;
+            }
+
+            header.shrink .header-contact {
+                opacity: 0.8;
+            }
+
+            .wrapper {
+                grid-template-columns: 1fr;
+                margin: 15px auto;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .hero-img {
+                height: 200px;
+            }
+
+            .main-content, .comment-card {
+                padding: 15px;
+            }
+        }
+
+
+            header, .navbar {
+                position: sticky;
+                top: 0;
+            }
+            .mobile-toggle {
+                display: none;
+            }
+            
+            
+            @media screen and (max-width: 768px) {
+            
+                /* media menu*/
+
+        .mobile-toggle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: fixed;
+                    top: 15px;
+                    right: 15px;
+                    z-index: 1000;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    padding: 5px;
+                    cursor: pointer;
+                    color: #2563eb; 
+                    font-size: 26px;
+                }
+
+                /* Sembunyikan menu secara default */
+            
+
+                /* Class active untuk menampilkan menu saat tombol diklik */
+                nav#mainNav.active {
+                    display: block;
+                }
+
+                /* Susun menu berderet ke bawah */      
+                /* Kotak Menu Minimalist & Compact */
+                nav#mainNav {
+                    display: none;
+                    position: absolute;
+                    top: 60px;
+                    right: 0;
+                    transform: translate(auto);
+                    width: 170px; /* Ukuran kotak lebih kecil/sedang */
+                    background-color: #ffffff;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                    border: 1px solid #f1f5f9;
+                    z-index: 999;
+                    overflow: hidden;
+                }
+
+                nav#mainNav.active {
+                    display: block;
+                }
+
+                nav#mainNav ul {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 6px;
+                    margin: 0;
+                    list-style: none;
+                    gap: 2px;
+                }
+
+                nav#mainNav a {
+                    display: block;
+                    width: 100%;
+                    padding: 8px 12px; /* Padding lebih ramping */
+                    color: #2563eb; /* Tulisan biru */
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 13px; /* Ukuran teks pas tidak besar */
+                    border-radius: 8px;
+                    transition: background-color 0.15s ease;
+                }
+
+                nav#mainNav a:hover,
+                nav#mainNav a:active {
+                    background-color: #eff6ff; /* Background biru muda saat disentuh */
+                }
+
+                .sidebar-widget {
+                    display: none;
+                }
+            }
+            #menuNav {
+                display: none;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigasi -->
+    <header>
+        <div class="navbar">
+            <div class="top-row">
+                <div class="logo-container">
+                    <img src="Gemini_Generated_Image_xrgimzxrgimzxrgi-removebg-preview.png" alt="Logo SMK" class="logo-img">
+                    <span class="logo-text">SMK Al-fusha</span>
+                </div>
+                
+                <div class="header-contact">
+                    <a href="tel:085742874434">📞 0857-4287-4434</a>
+                    <a href="mailto:smk.alfusha@gmail.com" class="contact-link">✉️ smk.alfusha@gmail.com</a>
+                </div>
+            </div>
+
+                <!-- Tombol Garis 3 (Mobile Toggle) -->
+                <button class="mobile-toggle" aria-label="Toggle Navigation">
+                    ☰
+                </button>
+
+                <!-- Menu Navigasi -->
+                <nav id="mainNav">
+                    <ul id="menuNav">
+                        <li><a href="medsos programer.html" style="color: #2563eb; text-decoration: none;">Media Sosial penulis</a></li>
+                        <li><a href="branda-skasha.html" style="color: #2563eb; text-decoration: none;">Beranda</a></li>
+                        <li><a href="halaman laporan PKL.html" style="color: #2563eb; text-decoration: none;">Laporan PKL</a></li>
+                        <li><a href="kurikulum skasha.html" style="color: #2563eb; text-decoration: none;">Apa Itu TKJ</a></li>
+                        <li><a href="skasha.html" style="color: #2563eb; text-decoration: none;">Kurikulum SMK Al-fusha</a></li>
+                    </ul>
+                </nav>
+
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Cari materi..." 
+                    onkeyup="prosesPencarian()"
+                >
+                <div id="searchResults" class="results-dropdown"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Wrapper Utama Layout -->
+    <div class="wrapper">
+        
+        <!-- KOLOM KIRI: Isi Artikel + Form Komentar -->
+        <div class="main-column">
+            
+            <main class="main-content">
+                <!-- Navigasi Breadcrumbs -->
+                <div class="breadcrumbs">
+                    <a href="branda-skasha.html">Beranda</a> &gt; 
+                    <span class="current-page">Berita Viral</span>
+                </div>
+
+                <div class="meta-info">Dipublikasikan pada: 17 september 2026 | Kategori: berita Viral</div>
+
+                <h1>Kebakaran Melanda Kawasan Gunung Bromo, Wisata Ditutup Sementara</h1>
+                
+                <img src="Picture2.jpg" class="hero-img" alt="banner jurusan TKJ">
+
+                <!-- Pembungkus Konten Teks yang Dapat Dicari -->
+                <div id="searchableContent">
+                    <p><strong>Probolinggo, 13 September 2026 </strong> Kebakaran hutan dan lahan kembali terjadi di kawasan <strong>Taman Nasional Bromo Tengger Semeru (TNBTS)</strong>, Jawa Timur. Kebakaran pertama kali diketahui pada Kamis, 10 September 2026 sekitar pukul 16.30 WIB di kawasan Savana Pengol</p>
+                    <p>Api kemudian meluas ke arah Gunung Kursi dan Jemplang. Kondisi angin yang kencang serta vegetasi yang kering akibat musim kemarau membuat api lebih mudah menyebar. Tim gabungan yang terdiri dari petugas TNBTS, Manggala Agni, BPBD, TNI-Polri, dan masyarakat terus melakukan pemadaman. Upaya pemadaman juga dilakukan dengan menggunakan metode water KLHK/kementerian-kehutanan-siaga-penuh-atasi-kebakaran-di-kawasan-bromo.</p>   
+                    <p>Untuk menjaga keselamatan wisatawan dan membantu proses pemadaman, Balai Besar TNBTS menutup seluruh aktivitas wisata di kawasan Gunung Bromo mulai 12 September 2026 sampai batas waktu yang akan ditentukan. Masyarakat dan wisatawan juga diimbau untuk tidak mendekati lokasi kebakaran. {"fallbackMarkdown":"(Pemerintah Kabupaten Probolinggo)Pemerintah Kabupaten Balai Besar Taman Nasional Bromo Tengger Semeru (BB TNBTS) menutup total kawasan wisata Gunung Bromo dari seluruh aktivitas...</p> 
+                    <p>Pemerintah masih melakukan penyelidikan untuk mengetahui penyebab kebakaran secara lebih pasti. Kementerian Kehutanan juga melibatkan tim ahli untuk mengkaji penyebab dan dampak kebakaran serta mendalami kemungkinan adanya pelanggaran hukum. </p>
+                    <p>Kebakaran tersebut menjadi perhatian karena kawasan Bromo merupakan kawasan konservasi yang memiliki nilai ekologis dan menjadi salah satu tujuan wisata penting di Jawa Timur. Penanganan dan pemantauan kebakaran masih terus dilakukan oleh petugas gabungan.</p>
+                
+                </div>
+            </main>
+            <main class="main-content">
+                
+                <div class="meta-info">Dipublikasikan pada: 17 september 2026 | Kategori: berita Viral</div>
+                
+                <h1>2Kondisi Gunung Anak Krakatau Hari Ini 15 September: Status Siaga Masih Berlaku Gunung Anak Krakatau masih berstatus Siaga Level III per 15 September 2026. Aktivitas kegempaan tercatat, dan masyarakat diimbau waspada serta menjauhi radius 3 km.</h1>
+                    
+                    
+                <img src="Picture1.jpg" class="hero-img" alt="banner jurusan TKJ">
+                        
+                <div id="searchableContent">
+                            
+                    <p>Gunung Anak Krakatau ercatat masih berstatus level III atau siaga usai sebelumnya sempat erupsi pada Jumat (4/9/2026). Lantas, bagaimana kondisi terkini Gunung Anak Krakatau hari ini? Berdasarkan laporan Badan Geologi, kondisi Gunung Anak Krakatau pada hari ini, Selasa (15/9/2026) tertutup kabut sehingga asap kawah tidak teramati. "Gunung api tertutup Kabut 0-III. Asap kawah tidak teramati," kata Badan Geologi dikutip dari situs resminya, Selasa (15/9/2026). Badan Geologi juga menyebut bahwa kondisi cuaca di sekitar Gunung Anak Krakatau pada hari ini cerah hingga berawan dengan angin lemah ke arah utara dan barat laut. Adapun, suhu udara hari ini berkisar 26.1-30.2°C dan kelembaban 62-84%</p>
+                    <p>diketahui, tingkat aktivitas Gunung Anak Krakatau saat ini masih pada Level III (Siaga). Badan Geologi mengimbau masyarakat, pengunjung/wisatawan/pendaki agar tidak memasuki dan melakukan kegiatan di dalam wilayah radius 3 km dari pusat aktivitas gunung api tersebut. Masyarakat juga diimbau untuk meningkatkan kewaspadaan terhadap ancaman bahaya awan panas, lava, dan lontaran batu pijar, serta hujan abu lebat. "Masyarakat di wilayah pantai Provinsi Banten dan Lampung harap tenang dan jangan mempercayai isu-isu tentang erupsi Gunung Anak Krakatau yang akan menyebabkan tsunami, serta dapat melakukan kegiatan seperti biasa dengan senantiasa mengikuti arahan BPBD setempat," ujar Badan Geologi. </p>
+                    <p>Sebagai informasi, Gunung Anak Krakatau sempat mengalami erupsi menerus pada Jumat (4/9/2026). Setelah erupsi menerus berakhir, aktivitas kembali menunjukkan karakter erupsi Strombolian. Hingga 10 September 2026, tercatat 13 erupsi Strombolian. Meskipun aktivitas kegempaan menunjukkan kecenderungan menurun, Gunung Anak Krakatau masih aktif dan berpotensi mengalami erupsi nya</p>    
+                    <p>Jumlah korban tewas akibat letusan besar Gunung Krakatau pada tahun 1883 tercatat mencapai 36.417 jiwa akibat letusan dan tsunami.</p>
+                
+                </div>
+
+            </main>
+
+            <main class="main-content">
+
+                <div class="meta-info">Dipublikasikan pada: 17 september 2026 | Kategori: berita Viral</div>
+
+                <h1>Sungai yang terletak tepat di sebelah Gereja Katolik Paroki St. Petrus, Pekalongan adalah Sungai Loji (atau populer disebut Kali Loji), yang berada tepat di samping kawasan bersejarah Jembatan Loji</h1>
+                
+                <img src="Picture3.jpg" class="hero-img" alt="banner jurusan TKJ">
+
+                <div id="searchableContent">
+                    <p >Kawasan sungai di dekat pusat kota Pekalongan yang dikelilingi tempat ibadah berdampingan—seperti Gereja Kristen Indonesia (GKI) Pekalongan, Gereja Katolik Santo Petrus, Masjid Al Ikhlas, dan Klenteng Pho An Thian—dilintasi oleh Sungai Loji.</p>
+                    <p>Kesimpulan tentang pencemaran air adalah kerusakan kualitas air akibat masuknya zat, energi, atau komponen berbahaya dari limbah industri, rumah tangga, dan pertanian yang mengancam kesehatan serta ekosistem</p>
+                    <p><strong>PENYEBAB UTAMA PENCEMARAN SUNGAI LOJI</strong></p>
+                    <ul>
+                        <li><strong>Limbah Batik dan Tekstil: </strong> besar pewarna kimia dari industri batik dan pabrik sarung atau tekstil rumahan dibuang langsung ke saluran air atau sungai tanpa pengolahan yang benar.</li>
+                        <li><strong>Zat Kimia Berbahaya:</strong> Sisa zat warna sintetis dari proses pencelupan kain membuat air sungai berubah menjadi hitam pekat dan berbau menyengat.</li>
+                        <li><strong>Sampah Organik</strong> Tumpukan sampah rumah tangga dan tanaman air seperti eceng gondok yang membusuk di dasar sungai memperparah kondisi air serta mengurangi oksigen</li>
+                        <li><strong>Saluran Limbah Belum Optimal:</strong> Di beberapa wilayah, sistem Instalasi Pengolahan Air Limbah (IPAL) atau saluran khusus limbah belum berfungsi sempurna sehingga cairan limbah melimpas ke lingkunga</li>
+                    </ul>
+            </main>
+
+            <!-- BINGKAI PENULIS & FORM KOMENTAR -->
+            <section class="comment-card">
+                <div class="author-box">
+                    <div class="author-info">
+                        Ditulis oleh <a href="#">Faisal Danniz</a>
+                    </div>
+                </div>
+
+                <div class="comment-section">
+                    <h3 class="comment-title">Tinggalkan Balasan</h3>
+                    <p class="comment-note">
+                        Alamat email Anda tidak akan dipublikasikan. Kolom yang wajib diisi ditandai dengan <span style="color: red;">*</span>
+                    </p>
+
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="bf062f92-df40-4cb2-9fe9-5ac82e79dc1a">
+
+                        <div class="form-group">
+                            <label for="komentar">Komentar <span style="color: red;">*</span></label>
+                            <textarea id="komentar" name="komentar" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nama">Nama <span style="color: red;">*</span></label>
+                                <input type="text" id="nama" name="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span style="color: red;">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="situs">Situs web</label>
+                                <input type="text" id="situs" name="situs">
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="save-info" name="save-info">
+                            <label for="save-info">Simpan nama, email, dan situs web saya pada peramban ini untuk komentar berikutnya.</label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Kirim Komentar</button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- KOLOM KANAN: SIDEBAR -->
+        <aside class="sidebar">
+            <!-- Widget 1 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Tabel Pendamping</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 2;">
+                    <li><a href="medsos programer.html" style="color: #2563eb; text-decoration: none;">Media Sosial penulis</a></li>
+                    <li><a href="branda-skasha.html" style="color: #2563eb; text-decoration: none;">Beranda</a></li>
+                    <li><a href="halaman laporan PKL.html" style="color: #2563eb; text-decoration: none;">Laporan PKL</a></li>
+                    <li><a href="skasha.html" style="color: #2563eb; text-decoration: none;">apa itu TKJ</a></li>
+                    <li><a href="kurikulum skasha.html" style="color: #2563eb; text-decoration: none;">Kurikulum SMK Al-fusha</a></li>
+                </ul>
+            </div>
+
+            <!-- Widget 2 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Artikel Pendamping</h3>
+                <h2>tips sukses melewati PKL</h2>
+                <p style="font-size: 0.9rem;">Sukses melewati PKL (Praktek Kerja Lapangan) ditentukan oleh <strong>disiplin waktu, sikap profesional, dan keaktifan belajar.</strong> Menerapkan etika yang baik akan membuat pengalaman magang Anda maksimal dan berkesan positif bagi perusahaan.</p>
+                
+                <p style="font-size: 0.9rem;"><strong>👉Disiplin dan Penampilan</strong></p>
+                <ul style="font-size: 0.85rem; padding-left: 15px;">
+                    <li><strong>Datang tepat waktu:</strong> Hadir lebih awal dari jadwal yang ditentukan untuk menunjukkan komitmen.</li>
+                    <li><strong>Berpakaian rapi:</strong> Gunakan seragam atau pakaian formal sesuai aturan instansi dengan atribut lengkap.</li>
+                    <li><strong>Patuhi aturan:</strong> Ikuti seluruh tata tertib yang berlaku di lingkungan kerja tanpa terkecuali.</li>
+                </ul>
+
+                <p style="font-size: 0.9rem;"><strong>👉Etika dan Komunikasi</strong></p>
+                <ul style="font-size: 0.85rem; padding-left: 15px;">
+                    <li><strong>Tunjukkan inisiatif:</strong> Jangan hanya menunggu perintah, tetapi cari tugas baru jika pekerjaan selesai.</li>
+                    <li><strong>Aktif bertanya:</strong> Bertanyalah jika ada instruksi yang belum jelas agar tidak salah langkah.</li>
+                    <li><strong>Jaga sopan santun:</strong> Ramah dan hargai semua pegawai di tempat kerja.</li>
+                </ul>
+
+                <p style="font-size: 0.9rem;"><strong>Pencatatan dan Evaluasi</strong></p>
+                <ul style="font-size: 0.85rem; padding-left: 15px;">
+                    <li><strong>Rutin isi jurnal:</strong> Catat setiap kegiatan harian dengan jujur dan lengkap.</li>
+                    <li><strong>Evaluasi berkala:</strong> Ambil pelajaran dari setiap kesalahan kecil untuk menjadi lebih baik.</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Pustaka Fuse.js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
+    <!-- JavaScript Pencarian & Header Shrink -->
+    <script>
+        // -------------------------------------------------------------
+        // Tahap 1: Menyiapkan Data Pencarian
+        // -------------------------------------------------------------
+        const dataArtikel = [
+            { judul: "Apa itu Jurusan TKJ? Pengertian dan Ruang Lingkup", url: "skasha.html" },
+            { judul: "Sinkronisasi Kurikulum TKJ SMK Al-fusha", url: "kurikulum skasha.html" },
+            { judul: "Panduan Penulisan Laporan PKL", url: "halaman laporan PKL.html" }
+        ];
+
+        // -------------------------------------------------------------
+        // Tahap 2: Mengkonfigurasi Fuse.js
+        // -------------------------------------------------------------
+        const options = {
+            keys: ['judul'],
+            threshold: 0.4
+        };
+        const fuse = new Fuse(dataArtikel, options);
+
+        // -------------------------------------------------------------
+        // Tahap 3: Fungsi Utama Pencarian
+        // -------------------------------------------------------------
+        function prosesPencarian() {
+            const inputTeks = document.getElementById('searchInput').value;
+            const wadahHasil = document.getElementById('searchResults');
+
+            if (inputTeks.trim() === "") {
+                wadahHasil.innerHTML = "";
+                return;
+            }
+
+            const hasilCari = fuse.search(inputTeks);
+            let strukturHTML = "";
+
+            if (hasilCari.length > 0) {
+                hasilCari.forEach(elemen => {
+                    strukturHTML += `<a href="${elemen.item.url}">${elemen.item.judul}</a>`;
+                });
+            } else {
+                strukturHTML = `<div style="padding: 12px 20px; color: #9ca3af;">Artikel tidak ditemukan...</div>`;
+            }
+
+            wadahHasil.innerHTML = strukturHTML;
+        }
+
+        // -------------------------------------------------------------
+        // Tahap 4: Efek Shrink Header saat Scroll
+        // -------------------------------------------------------------
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    const header = document.querySelector('header');
+                    
+                    if (window.scrollY > 100) {
+                        header.classList.add('shrink');
+                    } else if (window.scrollY < 30) {
+                        header.classList.remove('shrink');
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+
+    <script>
+        
+            document.addEventListener('DOMContentLoaded', () => {
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                const mainNav = document.querySelector('nav#mainNav');
+
+                if (mobileToggle && mainNav) {
+                mobileToggle.addEventListener('click', () => {
+                    // Menambah / menghapus class 'active' saat tombol diklik
+                    mainNav.classList.toggle('active');
+                });
+                }
+            });
+
+        </script>
+
+</body>
+</html>
